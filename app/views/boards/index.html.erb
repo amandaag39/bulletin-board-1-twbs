@@ -30,14 +30,25 @@
   </div>
 </div>
 
-<hr>
-
-<ul>
-  <% @list_of_boards.each do |a_board| %>
-    <li>
-      <a href="/boards/<%= a_board.id %>">
-        <%= a_board.name %>
-      </a>
-    </li>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-md-3">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header d-flex justify-content-between">
+          All boards
+          <button class="ms-auto btn btn-outline-success">Add a new board</button>
+        </div>  
+        <ul class="list-group list-group-flush">
+          <% @list_of_boards.each do |a_board| %>
+            <li class="list-group-item">
+              <a href="/boards/<%= a_board.id %>" class="d-flex justify-content-between align-items-center">
+                <%= a_board.name %>
+                <i class=" fa-solid fa-chevron-right"></i>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
