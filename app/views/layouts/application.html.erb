@@ -20,15 +20,25 @@
     
     <!-- Make pages responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Bulletin Board</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="#">All Boards</a>
+      </div>
+    </div>
+  </div>
+</nav>
   </head>
 
   <body>
-    <nav>
-      <a href="/">Bulletin Board</a>
-    </nav>
-
-    <hr>
-
+    
     <% if notice.present? %>
       <div class="alert alert-primary" role="alert">
         <%= notice %>
