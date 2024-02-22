@@ -1,53 +1,57 @@
-<div>
-  <div>
-    <h1>
-      All boards
-    </h1>
-  </div>
-</div>
-
-<hr>
-
-<div>
-  <div>
-    <h2>
-      Add a new board
-    </h2>
-
-    <form action="/insert_board" method="post">
-      <div>
-        <label for="name_box">
-          Name
-        </label>
-
-        <input type="text" id="name_box" name="query_name">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">New board</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <div class="modal-body">
+        <form action="/insert_board" method="post">
+          <div class="mb-3">
+            <label for="name_box" class="form-label">
+              Name
+            </label>
 
-      <button>
-        Add board
-      </button>
-    </form>
+            <input type="text" id="name_box" name="query_name" class="form-control">
+          </div>
+
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-success">
+              Add board
+            </button>
+          </div>
+      </form>
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="col-6 offset-md-3">
-      <div class="card" style="width: 18rem;">
-        <div class="card-header d-flex justify-content-between">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-header d-flex align-items-center">
           All boards
-          <button class="ms-auto btn btn-outline-success">Add a new board</button>
-        </div>  
-        <ul class="list-group list-group-flush">
-          <% @list_of_boards.each do |a_board| %>
-            <li class="list-group-item">
-              <a href="/boards/<%= a_board.id %>" class="d-flex justify-content-between align-items-center">
-                <%= a_board.name %>
-                <i class=" fa-solid fa-chevron-right"></i>
-              </a>
-            </li>
-          <% end %>
-        </ul>
+          <button type="button" class="ms-auto btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Add a new board</button>
+        </div> 
+        <div> <!-- This div wraps the list -->
+          <ul class="list-group list-group-flush">
+            <% @list_of_boards.each do |a_board| %>
+              <li class="list-group-item list-group-item-action">
+                <a href="/boards/<%= a_board.id %>" class="link-underline link-underline-opacity-0 link-success d-flex justify-content-between align-items-center link-offset-2">
+                  <%= a_board.name %>
+                  <div class="ms-auto">
+                  <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
+              </li>
+            <% end %>
+          </ul>
+        </div> <!-- Added missing closing tag here -->
       </div>
     </div>
   </div>
